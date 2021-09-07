@@ -1,0 +1,18 @@
+Prasann Viswanathan 190070047 RC Bandpass Filter
+
+r1 1 2 10k
+r2 3 0 10k
+c1 2 3 0.1u
+c2 3 0 0.1u
+v_in 1 0 dc 0 ac 1
+
+*analysis command
+.ac dec 10 1 10k
+.meas ac var max vdb(3)
+.control
+run
+
+*display commands
+plot vdb(3)
+.endc
+.end

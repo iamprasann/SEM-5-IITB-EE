@@ -1,0 +1,29 @@
+Prasann Viswanathan 190070047 BJT Differential Amplifier
+
+.model bc547a NPN IS=10f BF=200 ISE=10.3f IKF=50m NE=1.3
++ BR=9.5 VAF=80 IKR=12m ISC=47p NC=2 VAR=10 RB=280 RE=1 RC=40
++ tr=0.3u tf=0.5n cje=12p vje=0.48 mje=0.5 cjc=6p vjc=0.7 mjc=0.33 kf=2f
+
+q1 4 6 8 bc547a
+q2 5 7 8 bc547a
+vcc 1 0 12
+vin1 10 0 0
+vin2 11 0 0
+ve 9 0 -12
+rc1 1 2 6.8k
+rc2 1 3 6.8k
+rb1 10 6 1k
+rb2 11 7 1k
+re 9 8 10k
+vo1 2 4 0
+vo2 3 5 0
+
+*analysis commands
+.op
+.control
+run
+
+*display commands
+print i(vo1) i(vo2) i(ve) v(4) v(5) v(8)
+.endc
+.end

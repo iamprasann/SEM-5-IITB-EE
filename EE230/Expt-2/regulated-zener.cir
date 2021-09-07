@@ -1,0 +1,30 @@
+Prasann Viswanathan 190070047 Regulated Zener
+
+.SUBCKT ZENER_12 1 2
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 10.8
+.MODEL DF D ( IS=27.5p RS=0.620 N=1.10 CJO=78.3p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=5.49f RS=50 N=1.77 )
+.ENDS
+
+v_in 1 0
+rs 1 2 470
+vs 2 3 0
+rl 3 4 1k
+vl 4 0 0
+x1 5 3 ZENER_12
+vz 5 0 0
+
+*analysis commands 
+.dc v_in 15 25 0.5
+
+.control
+run
+
+*display commands
+plot v(3)
+plot i(vs) i(vl) i(vz)
+
+.endc
+.end

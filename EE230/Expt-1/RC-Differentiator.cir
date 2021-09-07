@@ -1,0 +1,17 @@
+Prasann Viswanathan 190070047 RC Differentiator
+
+r1 2 0 1k
+c1 1 2 0.1u
+*v_in 1 0 pulse(0 5 1u 0 0 10m 20m)
+v_in 1 0 pulse(0 5 1u 0 0 1m 2m)
+
+*analysis commands
+*.tran 0.1u 40m
+.tran 0.1u 10m
+.control
+run
+
+*display commands
+plot v(2) v(1)
+.endc
+.end 

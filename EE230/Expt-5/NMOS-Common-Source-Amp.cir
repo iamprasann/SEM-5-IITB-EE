@@ -1,0 +1,22 @@
+Prasann Viswanathan 190070047 NMOS Common Source Amp
+
+.model mos_model nmos Level=1 Vto=1 KP=100u w=10u L=1u
++ Gamma=0 Phi=0.65 Lambda=0.0
+
+vdd 1 0 12
+v_t 1 2 0
+r1 1 g 8.2k
+r2 g 0 3.3k
+rd 2 d 3.3k
+rs s 0 1k
+m1 d g s 0 mos_model
+
+*analysis commands
+.op
+.control
+run
+
+*display commands
+print v(d) v(g) v(s) i(v_t)
+.endc 
+.end

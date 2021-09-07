@@ -1,0 +1,34 @@
+Prasann Viswanathan 190070047 TwoStage CECC Amplifier
+
+.model bc547a NPN IS=10f BF=200 ISE=10.3f IKF=50m NE=1.3
++ BR=9.5 VAF=80 IKR=12m ISC=47p NC=2 VAR=10 RB=280 RE=1 RC=40
++ tr=0.3u tf=0.5n cje=12p vje=0.48 mje=0.5 cjc=6p vjc=0.7 mjc=0.33 kf=2f
+
+q1 3 2 1 bc547a
+q2 4 b2 9 bc547a
+vin 6 0 dc 0 ac 0.01
+vcc 4 0 12
+re 1 0 1k
+rl 8 0 10k
+rc 4 3 1.2k
+rs 6 5 0
+r1 4 2 10k
+r2 2 0 2.2k
+c1 5 2 10u
+c2 9 8 10u
+ce 1 0 100u
+vb2 3 b2 0
+ve2 9 7 0
+re2 7 0 10k
+
+*analysis commands
+*.op
+.ac dec 10 1 100000k
+.control
+run
+
+*display commands
+*print i(vb2) i(ve2)
+plot v(6) v(8)
+.endc
+.end

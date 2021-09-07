@@ -1,0 +1,17 @@
+Prasann Viswanathan 190070047 RLC Bandpass Filter
+
+r1 3 0 1k
+c1 2 3 0.1u
+l1 1 2 10m
+v_in 1 0 dc 0 ac 1
+
+*analysis command
+.ac dec 10 1 1000k
+.meas ac var max vdb(3)
+.control
+run 
+
+*display commands
+plot vdb(3)
+.endc
+.end 

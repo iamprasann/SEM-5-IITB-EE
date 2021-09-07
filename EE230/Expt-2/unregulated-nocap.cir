@@ -1,0 +1,23 @@
+Prasann Viswanathan 190070047 unregulated DC supply
+
+.MODEL 1N914 D (IS=6.2229E-9 N=1.9224 RS=0.33636 IKF=42.843E-3 CJO=764.38E-15
+                + M=0.1001 VJ=0.99900 BV=1000 IBV=1 TT=2.8854E-9)
+
+vin a b sin(0 21.213 50 0 0)
+d1 a 1 1N914
+v1 1 4 0
+d2 0 a 1N914
+d3 b 3 1N914
+v3 3 4 0
+d4 0 b 1N914
+r1 0 4 1k
+
+.tran 0.001 0.1
+.control
+run
+
+plot v(4) v(a,b)
+plot i(v1) i(v3)
+
+.endc
+.end

@@ -1,0 +1,15 @@
+Prasann Viswanathan 190070047 RC High-pass Filter
+
+r1 2 0 10k
+c1 1 2 0.1u
+v_in 1 0 dc 0 ac 1
+
+*analysis command
+.ac dec 10 1 10k
+.control
+run
+
+*display commands
+plot vdb(2)
+.endc
+.end 
